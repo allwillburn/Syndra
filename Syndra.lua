@@ -118,9 +118,7 @@ OnTick(function (myHero)
 	  if Mix:Mode() == "Combo" then
     
     
-             if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
-			CastTargetSpell(closeminion, _W)
-	    end
+             
     
              if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
 			CastTargetSpell(target, _W)
