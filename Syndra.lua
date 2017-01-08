@@ -117,12 +117,22 @@ OnTick(function (myHero)
 	--COMBO
 	  if Mix:Mode() == "Combo" then
     
-    
+            if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
+		     if target ~= nil then 
+                         CastTargetSpell(target, _Q)
+                     end
+            end
              
     
              if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
 			CastTargetSpell(target, _W)
 	    end
+			
+            	if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
+		     if target ~= nil then 
+                         CastTargetSpell(target, _Q)
+                     end
+            end		
      
       
 
