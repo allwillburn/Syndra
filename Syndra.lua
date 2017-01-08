@@ -199,7 +199,7 @@ OnTick(function (myHero)
                 end
 
                 if SyndraMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 925) then
-	        	CastSpell(closeminion, _W)
+	        	CastSpell(_W)
 	        end
 
                 if SyndraMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 700) then
