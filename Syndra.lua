@@ -137,7 +137,7 @@ OnTick(function (myHero)
       
 
             if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
-			 CastSpell(_E)
+			 CastSkillShot(_E, target)
 	    end
 
             if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
@@ -183,7 +183,7 @@ OnTick(function (myHero)
                 end 
 
                 if IsReady(_E) and ValidTarget(enemy, 700) and SyndraMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
-		                      CastSpell(_E)
+		                      CastSkillShot(_E, target)
   
                 end
       end
@@ -206,9 +206,7 @@ OnTick(function (myHero)
 			CastSpell(Tiamat)
 		end
 	
-		if SyndraMenu.LaneClear.RHydra:Value() and ValidTarget(closeminion, 400) then
-                        CastTargetSpell(closeminion, RHydra)
-      	        end
+		
           end
       end
         --AutoMode
@@ -224,7 +222,7 @@ OnTick(function (myHero)
         end
         if SyndraMenu.AutoMode.E:Value() then        
 	  if Ready(_E) and ValidTarget(target, 700) then
-		      CastSpell(_E)
+		      CastSkillShot(_E, target)
 	  end
         end
         if SyndraMenu.AutoMode.R:Value() then        
