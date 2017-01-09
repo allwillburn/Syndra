@@ -196,12 +196,10 @@ OnTick(function (myHero)
 	        end
 
                 if SyndraMenu.LaneClear.E:Value() and Ready(_E) and ValidTarget(closeminion, 700) then
-	        	CastSpell(_E)
+	        	 CastSkillShot(_E, closeminion)
 	        end
 
-                if SyndraMenu.LaneClear.Tiamat:Value() and ValidTarget(closeminion, 350) then
-			CastSpell(Tiamat)
-		end
+               
 	
 		
           end
