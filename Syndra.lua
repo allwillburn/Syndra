@@ -39,13 +39,7 @@ SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
 SyndraMenu.Combo:Slider("RX", "X Enemies to Cast R",3,1,5,1)
-SyndraMenu.Combo:Boolean("Cutlass", "Use Cutlass", true)
-SyndraMenu.Combo:Boolean("Tiamat", "Use Tiamat", true)
-SyndraMenu.Combo:Boolean("BOTRK", "Use BOTRK", true)
-SyndraMenu.Combo:Boolean("RHydra", "Use RHydra", true)
-SyndraMenu.Combo:Boolean("YGB", "Use GhostBlade", true)
-SyndraMenu.Combo:Boolean("Gunblade", "Use Gunblade", true)
-SyndraMenu.Combo:Boolean("Randuins", "Use Randuins", true)
+
 
 
 SyndraMenu:SubMenu("AutoMode", "AutoMode")
@@ -60,8 +54,7 @@ SyndraMenu:SubMenu("LaneClear", "LaneClear")
 SyndraMenu.LaneClear:Boolean("Q", "Use Q", true)
 SyndraMenu.LaneClear:Boolean("W", "Use W", true)
 SyndraMenu.LaneClear:Boolean("E", "Use E", true)
-SyndraMenu.LaneClear:Boolean("RHydra", "Use RHydra", true)
-SyndraMenu.LaneClear:Boolean("Tiamat", "Use Tiamat", true)
+
 
 SyndraMenu:SubMenu("Harass", "Harass")
 SyndraMenu.Harass:Boolean("Q", "Use Q", true)
@@ -125,7 +118,7 @@ OnTick(function (myHero)
              
     
              if SyndraMenu.Combo.W:Value() and Ready(_W) then
-			CastSpell( _W)
+			CastTargetSpell(target, _W)
 	    end
 			
 		if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
