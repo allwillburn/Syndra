@@ -122,7 +122,7 @@ OnTick(function (myHero)
 	    end
 			
 		if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
-			CastTargetSpell(target, _W)
+			CastSkillShot(_W, target)
 	    end
 			
             	if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
