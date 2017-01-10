@@ -118,7 +118,7 @@ OnTick(function (myHero)
              
     
             if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then
-        Cast(_W,target)
+        CastTargetSpell(_W,target)
         elseif IsReady(_W) and GetCastName(myHero, _W) == "SyndraW" and ValidTarget(target, 925) and SyndraMenu.Combo.W:Value() then
           for _,Ball in pairs(Balls) do
             if GetDistance(Ball) <= 925 then
