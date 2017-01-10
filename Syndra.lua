@@ -117,10 +117,8 @@ OnTick(function (myHero)
             end
              
     
-            if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then
-        CastTargetSpell(target, _W)
-        elseif IsReady(_W) and ValidTarget(target, 925) and SyndraMenu.Combo.W:Value() then
-          for _,Ball in pairs(Balls) do
+            if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then        
+           for _,Ball in pairs(Balls) do
             if GetDistance(Ball) <= 925 then
             CastSkillShot(_W,GetOrigin(Ball))
             end
