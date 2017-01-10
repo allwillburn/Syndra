@@ -13,6 +13,7 @@ if GetObjectName(GetMyHero()) ~= "Syndra" then return end
 
 
 require("DamageLib")
+require("Deftlib")
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
