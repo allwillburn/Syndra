@@ -83,6 +83,7 @@ OnTick(function (myHero)
         local BOTRK = GetItemSlot(myHero, 3153)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
+		Balls = {}
 
 	--AUTO LEVEL UP
 	if SyndraMenu.AutoMode.Level:Value() then
