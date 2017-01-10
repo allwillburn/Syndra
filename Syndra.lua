@@ -117,13 +117,20 @@ OnTick(function (myHero)
             end
              
     
-             if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
-			CastTargetSpell(target, _W)
+            if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then
+        Cast(_W,target)
+        elseif IsReady(_W) and GetCastName(myHero, _W) == "SyndraW" and ValidTarget(target, 925) and SyndraMenu.Combo.W:Value() then
+          for _,Ball in pairs(Balls) do
+            if GetDistance(Ball) <= 925 then
+            CastSkillShot(_W,GetOrigin(Ball))
+            end
+          end	  
+          for i,mobs in pairs(minionManager.objects) do
+	    if GetDistance(mobs) <= 925 then
+	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
-			
-		if SyndraMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, 925) then
-			CastSkillShot(_W, target)
-	    end
+	  end
+end
 			
             	if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
 		     if target ~= nil then 
