@@ -136,7 +136,7 @@ OnTick(function (myHero)
 	  end
 	end			
          
-end
+     end
             	
              	   	    
             if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
