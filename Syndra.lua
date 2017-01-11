@@ -133,8 +133,8 @@ OnTick(function (myHero)
 	    if GetDistance(mobs) <= 925 then
 	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
-	  end
-         end
+	  
+         
 
             	
              	   	    
