@@ -106,7 +106,7 @@ OnTick(function (myHero)
 				if target ~= nil then 
                                       CastTargetSpell(target, _Q)
                                 end
-            end          
+                   end  
           end
 
 	--COMBO
@@ -133,9 +133,10 @@ OnTick(function (myHero)
 	    if GetDistance(mobs) <= 925 then
 	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
-	  
+	  end
+	end			
          
-
+end
             	
              	   	    
             if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
