@@ -134,7 +134,7 @@ OnTick(function (myHero)
 	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
 	  end
-	end			
+			
          
      end
             if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
