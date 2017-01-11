@@ -35,7 +35,7 @@ local SyndraMenu = Menu("Syndra", "Syndra")
 
 SyndraMenu:SubMenu("Combo", "Combo")
 
-SyndraMenu.Combo:Boolean("Q", "Use Q in combo", true) 
+SyndraMenu.Combo:Boolean("Q", "Use Q in combo", true)
 SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
@@ -106,7 +106,7 @@ OnTick(function (myHero)
 				if target ~= nil then 
                                       CastTargetSpell(target, _Q)
                                 end
-                   end  
+            end          
           end
 
 	--COMBO
@@ -118,10 +118,6 @@ OnTick(function (myHero)
                      end
             end
              
-	  if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
-			 CastSkillShot(_E, target)
-	    end
-
     
             if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then        
            for _,Ball in pairs(Balls) do
@@ -134,14 +130,12 @@ OnTick(function (myHero)
 	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
 	  end
-			
-         
-     end
-            if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
-		     if target ~= nil then 
-                         CastTargetSpell(target, _Q)
-                     end
-            end	
+end
+			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
+			 CastSkillShot(_E, target)
+	    end
+
+            	
              	   	    
             if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
 			CastTargetSpell(target, _R)
