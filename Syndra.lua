@@ -137,7 +137,11 @@ OnTick(function (myHero)
 	end			
          
      end
-            	
+            if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
+		     if target ~= nil then 
+                         CastTargetSpell(target, _Q)
+                     end
+            end	
              	   	    
             if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
 			CastTargetSpell(target, _R)
