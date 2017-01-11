@@ -118,6 +118,10 @@ OnTick(function (myHero)
                      end
             end
              
+	  if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
+			 CastSkillShot(_E, target)
+	    end
+
     
             if SyndraMenu.Combo.W:Value() and ValidTarget(target, 925) then        
            for _,Ball in pairs(Balls) do
@@ -130,10 +134,7 @@ OnTick(function (myHero)
 	    CastSkillShot(_W,GetOrigin(mobs))
 	    end
 	  end
-
-			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
-			 CastSkillShot(_E, target)
-	    end
+         end
 
             	
              	   	    
