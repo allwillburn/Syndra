@@ -35,7 +35,7 @@ local SyndraMenu = Menu("Syndra", "Syndra")
 
 SyndraMenu:SubMenu("Combo", "Combo")
 
-SyndraMenu.Combo:Boolean("Q", "Use Q in combo", true)
+SyndraMenu.Combo:Boolean("Q", "Use Q in combo", true) 
 SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
