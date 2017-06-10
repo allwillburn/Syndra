@@ -1,4 +1,4 @@
-local ver = "0.01"
+local ver = "0.02"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -40,6 +40,7 @@ SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
 SyndraMenu.Combo:Slider("RX", "X Enemies to Cast R",3,1,5,1)
+SyndraMenu.Combo:Slider("BX", "X Balls to Cast R",3,1,5,1)
 
 
 
@@ -63,7 +64,9 @@ SyndraMenu.Harass:Boolean("W", "Use W", true)
 
 SyndraMenu:SubMenu("KillSteal", "KillSteal")
 SyndraMenu.KillSteal:Boolean("Q", "KS w Q", true)
+SyndraMenu.KillSteal:Boolean("W", "KS w W", true)
 SyndraMenu.KillSteal:Boolean("E", "KS w E", true)
+SyndraMenu.KillSteal:Boolean("R", "KS w R", true)
 
 SyndraMenu:SubMenu("AutoIgnite", "AutoIgnite")
 SyndraMenu.AutoIgnite:Boolean("Ignite", "Ignite if killable", true)
@@ -143,7 +146,7 @@ end
             end	
             	
              	   	    
-            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
+            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) and (BallsAround(myHeroPos(), 1000) >= SyndraMenu.Combo.BX:Value()) then
 			CastTargetSpell(target, _R)
             end
 
@@ -178,11 +181,21 @@ end
                                       CastTargetSpell(target, _Q)
 		         end
                 end 
+			
+		if IsReady(_W) and ValidTarget(enemy, 925) and SyndraMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("W",enemy) then
+		                      CastTargetSpell(target, _W)
+  
+                end
 
                 if IsReady(_E) and ValidTarget(enemy, 700) and SyndraMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
 		                      CastSkillShot(_E, target)
   
                 end
+			
+		if IsReady(_R) and ValidTarget(enemy, 675) and SyndraMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
+		                      CastTargetSpell(target, _R)
+  
+                end	
       end
 
       if Mix:Mode() == "LaneClear" then
