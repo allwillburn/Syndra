@@ -1,4 +1,4 @@
-local ver = "0.06"
+local ver = "0.07"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -67,6 +67,9 @@ SyndraMenu.KillSteal:Boolean("Q", "KS w Q", true)
 SyndraMenu.KillSteal:Boolean("W", "KS w W", true)
 SyndraMenu.KillSteal:Boolean("E", "KS w E", true)
 SyndraMenu.KillSteal:Boolean("R", "KS w R", true)
+
+SyndraMenu:SubMenu("AutoFarm", "AutoFarm")
+SyndraMenu.AutoFarm:Boolean("Q", "Auto Q", false)
 
 SyndraMenu:SubMenu("AutoIgnite", "AutoIgnite")
 SyndraMenu.AutoIgnite:Boolean("Ignite", "Ignite if killable", true)
@@ -239,6 +242,16 @@ end
 		      CastTargetSpell(target, _R)
 	  end
         end
+		
+		--Auto on minions
+          for _, minion in pairs(minionManager.objects) do
+      			
+      			   	
+              if SyndraMenu.AutoFarm.Q:Value() and Ready(_Q) and ValidTarget(minion, 800) and GetCurrentHP(minion) < CalcDamage(myHero,minion,QDmg,Q) then
+                  CastTargetSpell(minion, _Q)
+              end
+	end		
+		
                 
 	--AUTO GHOST
 	if SyndraMenu.AutoMode.Ghost:Value() then
