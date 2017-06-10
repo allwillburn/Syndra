@@ -146,7 +146,7 @@ end
             end	
             	
              	   	    
-            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) and (SyndraSpheresAround(myHeroPos(), 1000) >= SyndraMenu.Combo.BX:Value()) then
+            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) and (SyndraSpheres(myHeroPos(), 1000) >= SyndraMenu.Combo.BX:Value()) then
 			CastTargetSpell(target, _R)
             end
 
