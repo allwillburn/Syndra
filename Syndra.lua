@@ -1,4 +1,4 @@
-local ver = "0.05"
+local ver = "0.06"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -40,7 +40,7 @@ SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
 SyndraMenu.Combo:Slider("RX", "X Enemies to Cast R",3,1,5,1)
-SyndraMenu.Combo:Slider("BX", "X Balls to Cast R",3,1,5,1)
+
 
 
 
@@ -88,31 +88,7 @@ OnTick(function (myHero)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
 		Balls = {}
-	local SyndraShperes = {}
-		
-		OnObjectLoad(function(Object)
-  if GetObjectBaseName(Object) == "SyndraShere" then
-  table.insert(SyndraSpheres, Object)
-  end
-end)
-
-OnCreateObj(function(Object) 
-  if GetObjectBaseName(Object) == "SyndraShpere" then
-  table.insert(SyndraShperes, Object)
-  end
-end)
-
-
-
-function CountSyndraShperes(unit)
-  local syndraspheres = 0
-  for _,syndrashperes in pairs(SyndraShperes) do
-    if not unit or GetDistance(syndrasphere, unit) < 1000 then 
-    syndrashperes = syndrashperes + 1
-    end
-  end
-  return syndrasheres
-end
+	
 
 	--AUTO LEVEL UP
 	if SyndraMenu.AutoMode.Level:Value() then
@@ -171,7 +147,7 @@ end
             end	
             	
              	   	    
-            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) and CountSyndraSpheres() >= SyndraMenu.Combo.BX:Value() then
+            if SyndraMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, 675) and (EnemiesAround(myHeroPos(), 675) >= SyndraMenu.Combo.RX:Value()) then
 			CastTargetSpell(target, _R)
             end
 
