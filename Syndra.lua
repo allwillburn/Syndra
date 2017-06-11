@@ -1,4 +1,4 @@
-local ver = "0.07"
+local ver = "0.08"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -36,6 +36,7 @@ local SyndraMenu = Menu("Syndra", "Syndra")
 SyndraMenu:SubMenu("Combo", "Combo")
 
 SyndraMenu.Combo:Boolean("Q", "Use Q in combo", true)
+SyndraMenu.Combo:Slider("Qpred", "Q Hit Chance", 3,0,10,1)
 SyndraMenu.Combo:Boolean("W", "Use W in combo", true)
 SyndraMenu.Combo:Boolean("E", "Use E in combo", true)
 SyndraMenu.Combo:Boolean("R", "Use R in combo", true)
@@ -48,6 +49,7 @@ SyndraMenu:SubMenu("AutoMode", "AutoMode")
 SyndraMenu.AutoMode:Boolean("Level", "Auto level spells", false)
 SyndraMenu.AutoMode:Boolean("Ghost", "Auto Ghost", false)
 SyndraMenu.AutoMode:Boolean("Q", "Auto Q", false)
+SyndraMenu.AutoMode:Slider("Qpred", "Q Hit Chance", 3,0,10,1)
 SyndraMenu.AutoMode:Boolean("W", "Auto W", false)
 SyndraMenu.AutoMode:Boolean("E", "Auto E", false)
 SyndraMenu.AutoMode:Boolean("R", "Auto R", false)
@@ -90,7 +92,9 @@ OnTick(function (myHero)
         local BOTRK = GetItemSlot(myHero, 3153)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
+        local SyndraQ = {delay = 0, range = 800, width = 50, speed = math.huge}
 		Balls = {}
+		
 	
 
 	--AUTO LEVEL UP
@@ -119,12 +123,13 @@ OnTick(function (myHero)
 	--COMBO
 	  if Mix:Mode() == "Combo" then
     
-            if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
-		     if target ~= nil then 
-                         CastTargetSpell(target, _Q)
-                     end
-            end
-			
+            
+			 if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
+                local QPred = GetPrediction(target,SyndraQ)
+                       if QPred.hitChance > (SyndraMenu.Combo.Qpred:Value() * 0.1) then
+                                 CastTargetSpell(QPred.castPos, _Q)
+                       end
+                end
 			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
 			 CastSkillShot(_E, target)
 	    end
@@ -222,11 +227,12 @@ end
           end
       end
         --AutoMode
-        if SyndraMenu.AutoMode.Q:Value() then        
-          if Ready(_Q) and ValidTarget(target, 800) then
-		      CastTargetSpell(target, _Q)
-          end
-        end 
+         	 if SyndraMenu.AutoMode.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
+                local QPred = GetPrediction(target,SyndraQ)
+                       if QPred.hitChance > (SyndraMenu.AutoMode.Qpred:Value() * 0.1) then
+                                 CastTargetSpell(QPred.castPos, _Q)
+                       end
+                end
         if SyndraMenu.AutoMode.W:Value() then        
           if Ready(_W) and ValidTarget(target, 925) then
 	  	      CastTargetSpell(target, _W)
