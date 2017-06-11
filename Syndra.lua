@@ -1,4 +1,4 @@
-local ver = "0.14"
+local ver = "0.15"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -32,7 +32,7 @@ GetWebResultAsync("https://raw.githubusercontent.com/allwillburn/Syndra/master/S
 GetLevelPoints = function(unit) return GetLevel(unit) - (GetCastLevel(unit,0)+GetCastLevel(unit,1)+GetCastLevel(unit,2)+GetCastLevel(unit,3)) end
 local SetDCP, SkinChanger = 0
 
-local SyndraQ = {delay = .25, range = 800, width = 50, speed = 1200}
+local SyndraQ = {delay = .0, range = 800, width = 50, speed = 1200}
  
 local SyndraMenu = Menu("Syndra", "Syndra")
 
@@ -95,7 +95,7 @@ OnTick(function (myHero)
         local BOTRK = GetItemSlot(myHero, 3153)
         local Cutlass = GetItemSlot(myHero, 3144)
         local Randuins = GetItemSlot(myHero, 3143)
-        local SyndraQ = {delay = .25, range = 800, width = 50, speed = 1200}
+        local SyndraQ = {delay = .0, range = 800, width = 50, speed = 1200}
 		Balls = {}
 		
 	
