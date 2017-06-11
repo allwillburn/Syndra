@@ -1,4 +1,4 @@
-local ver = "0.10"
+local ver = "0.11"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -233,7 +233,7 @@ end
          	 if SyndraMenu.AutoMode.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
                 local QPred = GetPrediction(target,SyndraQ)
                        if QPred.hitChance > (SyndraMenu.AutoMode.Qpred:Value() * 0.1) then
-                                 CastTargetSpell(QPred.castPos, _Q)
+                                 CastSkillShot(_Q,QPred.castPos)
                        end
                 end
         if SyndraMenu.AutoMode.W:Value() then        
