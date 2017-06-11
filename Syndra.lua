@@ -1,4 +1,4 @@
-local ver = "0.09"
+local ver = "0.10"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -130,7 +130,7 @@ OnTick(function (myHero)
 			 if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
                 local QPred = GetPrediction(target,SyndraQ)
                        if QPred.hitChance > (SyndraMenu.Combo.Qpred:Value() * 0.1) then
-                                 CastTargetSpell(QPred.castPos, _Q)
+                                 CastSkillShot(_Q,QPred.castPos)
                        end
                 end
 			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
