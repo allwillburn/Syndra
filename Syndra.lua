@@ -1,4 +1,4 @@
-local ver = "0.19"
+local ver = "0.20"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -13,8 +13,7 @@ if GetObjectName(GetMyHero()) ~= "Syndra" then return end
 
 
 require("DamageLib")
-require("Deftlib")
-require("OpenPredict")
+require("Deftlib"
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -129,10 +128,9 @@ OnTick(function (myHero)
     
             
 			 if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
-                local QPred = GetPrediction(target,SyndraQ)
-                       if QPred.hitChance > (SyndraMenu.Combo.Qpred:Value() * 0.1) then
+                
                                  CastSkillShot(_Q,QPred.castPos)
-                       end
+                       
                 end
 			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
 			 CastSkillShot(_E, target)
@@ -232,10 +230,9 @@ end
       end
         --AutoMode
          	 if SyndraMenu.AutoMode.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
-                local QPred = GetPrediction(target,SyndraQ)
-                       if QPred.hitChance > (SyndraMenu.AutoMode.Qpred:Value() * 0.1) then
+                
                                  CastSkillShot(_Q,QPred.castPos)
-                       end
+                       
                 end
         if SyndraMenu.AutoMode.W:Value() then        
           if Ready(_W) and ValidTarget(target, 925) then
