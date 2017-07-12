@@ -1,4 +1,4 @@
-local ver = "0.21"
+local ver = "0.22"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -118,7 +118,7 @@ OnTick(function (myHero)
                     
             if SyndraMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
 				if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSkillShot(_Q, target.pos) 
                                 end
             end          
           end
@@ -152,7 +152,7 @@ end
               
 		if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
 		     if target ~= nil then 
-                         CastTargetSpell(target, _Q)
+                         CastSkillShot(_Q, target.pos) 
                      end
             end	
             	
@@ -189,7 +189,7 @@ end
                 
                 if IsReady(_Q) and ValidTarget(enemy, 800) and SyndraMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
 		         if target ~= nil then 
-                                      CastTargetSpell(target, _Q)
+                                      CastSkillShot(_Q, target.pos) 
 		         end
                 end 
 			
@@ -231,7 +231,7 @@ end
         --AutoMode
          	 if SyndraMenu.AutoMode.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
                 
-                                 CastSkillShot(_Q,QPred.castPos)
+                                 CastSkillShot(_Q, target.pos) 
                        
                 end
         if SyndraMenu.AutoMode.W:Value() then        
