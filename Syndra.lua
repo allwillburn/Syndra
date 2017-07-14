@@ -1,4 +1,4 @@
-local ver = "0.22"
+local ver = "0.23"
 
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
@@ -14,6 +14,7 @@ if GetObjectName(GetMyHero()) ~= "Syndra" then return end
 
 require("DamageLib")
 require("Deftlib")
+require("OpenPredict")
 
 function AutoUpdate(data)
     if tonumber(data) > tonumber(ver) then
@@ -118,7 +119,7 @@ OnTick(function (myHero)
                     
             if SyndraMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
 				if target ~= nil then 
-                                      CastSkillShot(_Q, target.pos) 
+                                      CastTargetSpell(target, _Q)
                                 end
             end          
           end
@@ -128,9 +129,10 @@ OnTick(function (myHero)
     
             
 			 if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
-                
+                local QPred = GetPrediction(target,SyndraQ)
+                       if QPred.hitChance > (SyndraMenu.Combo.Qpred:Value() * 0.1) then
                                  CastSkillShot(_Q,QPred.castPos)
-                       
+                       end
                 end
 			if SyndraMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, 700) then
 			 CastSkillShot(_E, target)
@@ -152,7 +154,7 @@ end
               
 		if SyndraMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 800) then
 		     if target ~= nil then 
-                         CastSkillShot(_Q, target.pos) 
+                         CastTargetSpell(target, _Q)
                      end
             end	
             	
@@ -189,7 +191,7 @@ end
                 
                 if IsReady(_Q) and ValidTarget(enemy, 800) and SyndraMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then
 		         if target ~= nil then 
-                                      CastSkillShot(_Q, target.pos) 
+                                      CastTargetSpell(target, _Q)
 		         end
                 end 
 			
@@ -230,9 +232,10 @@ end
       end
         --AutoMode
          	 if SyndraMenu.AutoMode.Q:Value() and Ready(_Q) and ValidTarget(target, 850) then
-                
-                                 CastSkillShot(_Q, target.pos) 
-                       
+                local QPred = GetPrediction(target,SyndraQ)
+                       if QPred.hitChance > (SyndraMenu.AutoMode.Qpred:Value() * 0.1) then
+                                 CastSkillShot(_Q,QPred.castPos)
+                       end
                 end
         if SyndraMenu.AutoMode.W:Value() then        
           if Ready(_W) and ValidTarget(target, 925) then
